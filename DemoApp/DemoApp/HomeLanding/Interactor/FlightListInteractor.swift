@@ -10,22 +10,10 @@ import Combine
 import SwiftUI
 
 
-protocol ListInteractorInputProtocols {
-    func callAPIToGetFlights()
-    var presenter: ListInteractorOutputProtocols? { set get }
-    var quotes: [Quotes]? { set get }
-}
-
-protocol ListInteractorOutputProtocols {
-    
-    
-}
-
-class FlightListInteractor: ObservableObject, ListInteractorInputProtocols {
-    var presenter: ListInteractorOutputProtocols?
+class FlightListInteractor: ObservableObject {
     var carriers : [Carriers]?
     var places : [Places]?
-    var currencies : [Currencies]?
+    var currencies : [Currency]?
     @Published var quotes: [Quotes]? = []
     
     var response: FlightsResponse? {
@@ -59,8 +47,8 @@ class FlightListInteractor: ObservableObject, ListInteractorInputProtocols {
     }
 
     
-    func callAPIToGetFlights() {
-        let request = APIRequest(apiKey: Constants().apiKey, endPoint: "FR/eur/en-US/uk/us/anytime")
+    func callAPIToGetFlights(originCode: String, destinationCode: String, departure: String) {
+        let request = APIRequest(apiKey: Constants().apiKey, endPoint: "FR/eur/en-US/\(originCode.lowercased())/\(destinationCode.lowercased())/\(departure)")
         APIManager.sharedInstance.getFlights(request: request, completionHandler: { (jsonData) in
             if let data = jsonData {
                 self.parseQuotesResponse(json: data)
@@ -68,23 +56,11 @@ class FlightListInteractor: ObservableObject, ListInteractorInputProtocols {
         })
     }
     
-    
-    func callListOfCountriesAPI() {
-        let locale = Locale.current
-        let request = APIRequest(apiKey: Constants().apiKey, endPoint: locale.identifier)
-        APIManager.sharedInstance.getListOfCountries(request: request, completionHandler: { (jsonData) in
-            if let data = jsonData {
-//                self.parseQuotesResponse(json: data)
-            }
-        })
-    }
-    
     func callListOfCurrenciesAPI() {
         let request = APIRequest(apiKey: Constants().apiKey, endPoint: "")
-        APIManager.sharedInstance.getListOfCurrencies(request: request, completionHandler: { (jsonData) in
-            if let data = jsonData {
-//                self.parseQuotesResponse(json: data)
-            }
+        APIManager.sharedInstance.getListOfCurrencies(request: request, completionHandler: { (_) in
+//            if let data = jsonData {
+//            }
         })
     }
     

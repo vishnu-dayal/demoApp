@@ -36,7 +36,7 @@ struct APIManager {
         guard let apiKey = request.apiKey, let endPoint = request.endPoint else {
             return
         }
-        var apiPath = String(format: Constants().apiBaseUrl, Constants().apiBrowseQuotes)
+        var apiPath = String(format: Constants().apiBaseUrl, Constants().apiBrowseCountries)
         apiPath = apiPath.appending("\(endPoint)")
         apiPath = apiPath.appending("?apikey=\(apiKey)")
         apiCall(apiUrl: apiPath, completionHandler: completionHandler)
@@ -46,7 +46,7 @@ struct APIManager {
         guard let apiKey = request.apiKey, let endPoint = request.endPoint else {
             return
         }
-        var apiPath = String(format: Constants().apiBaseUrl, Constants().apiBrowseQuotes)
+        var apiPath = String(format: Constants().apiBaseUrl, Constants().apiBrowseCurrencies)
         apiPath = apiPath.appending("\(endPoint)")
         apiPath = apiPath.appending("?apikey=\(apiKey)")
         apiCall(apiUrl: apiPath, completionHandler: completionHandler)

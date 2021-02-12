@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6pc-zb-jJ5">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Host View Controller-->
+        <scene sceneID="2wl-aJ-N3Q">
+            <objects>
+                <hostingController storyboardIdentifier="MyHostViewController" id="HKk-O8-glB" customClass="MyHostViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="OMr-Xs-GEJ"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IlY-i4-6n2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-45" y="145"/>
+        </scene>
+        <!--Home Landing View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="HomeListViewController" id="BYZ-38-t0r" customClass="HomeLandingViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ncq-dk-M52">
+                                <rect key="frame" x="16" y="92" width="343" height="110"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xKx-5f-wMt">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaN-Jo-ZaG">
+                                                <rect key="frame" x="0.0" y="0.0" width="166.5" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="From:"/>
+                                                <connections>
+                                                    <action selector="tapBtnSourceWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="diZ-eo-l9D"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URG-OP-yCn">
+                                                <rect key="frame" x="176.5" y="0.0" width="166.5" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="To:"/>
+                                                <connections>
+                                                    <action selector="tapBtnDestinationWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YU5-6L-1SI"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="URG-OP-yCn" firstAttribute="height" secondItem="jaN-Jo-ZaG" secondAttribute="height" id="Agf-uN-fml"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAW-nz-2dC">
+                                        <rect key="frame" x="0.0" y="40" width="343" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Departure:"/>
+                                        <connections>
+                                            <action selector="tapBtnDepartureDateWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AEh-hR-dBH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sho-iN-tM6">
+                                        <rect key="frame" x="0.0" y="80" width="343" height="30"/>
+                                        <state key="normal" title="Get Flights"/>
+                                        <connections>
+                                            <action selector="tapBtnGetFlightsWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O6f-y0-4xJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dlp-8s-vjG">
+                                <rect key="frame" x="0.0" y="222" width="375" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="vX4-aI-oK5"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="c5U-a8-mUg"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="MEo-IS-3Q6"/>
+                                </connections>
+                            </pickerView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="YRQ-04-BgE">
+                                <rect key="frame" x="0.0" y="222" width="375" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="PSc-uO-dS6"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="valueChangedDatePickerWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="X19-ZO-IGz"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dlp-8s-vjG" secondAttribute="trailing" id="3Jx-dR-QkC"/>
+                            <constraint firstItem="YAW-nz-2dC" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0449775" id="3zu-wx-mAV"/>
+                            <constraint firstItem="Dlp-8s-vjG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="I8H-Wb-1xw"/>
+                            <constraint firstItem="YRQ-04-BgE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ju9-ey-OUl"/>
+                            <constraint firstItem="jaN-Jo-ZaG" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0449775" id="LNs-wf-lSF"/>
+                            <constraint firstItem="YRQ-04-BgE" firstAttribute="top" secondItem="ncq-dk-M52" secondAttribute="bottom" constant="20" id="SA9-p7-1QX"/>
+                            <constraint firstItem="ncq-dk-M52" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="UPx-O5-FYL"/>
+                            <constraint firstItem="ncq-dk-M52" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="XKT-GM-3qT"/>
+                            <constraint firstItem="sho-iN-tM6" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0449775" id="fbE-IV-0Xl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ncq-dk-M52" secondAttribute="trailing" constant="16" id="os5-uJ-8eP"/>
+                            <constraint firstItem="Dlp-8s-vjG" firstAttribute="top" secondItem="ncq-dk-M52" secondAttribute="bottom" constant="20" id="par-jx-KvB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YRQ-04-BgE" secondAttribute="trailing" id="ykU-3q-7Hz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ajh-bx-JPh"/>
+                    <connections>
+                        <outlet property="btnDepartureDate" destination="YAW-nz-2dC" id="Q3y-DB-d2I"/>
+                        <outlet property="btnDestination" destination="URG-OP-yCn" id="xcL-K0-EmR"/>
+                        <outlet property="btnGetFlights" destination="sho-iN-tM6" id="q6e-Bc-yzC"/>
+                        <outlet property="btnSource" destination="jaN-Jo-ZaG" id="hHh-7I-eN2"/>
+                        <outlet property="datePicker" destination="YRQ-04-BgE" id="pRQ-m7-rRL"/>
+                        <outlet property="pickerView" destination="Dlp-8s-vjG" id="OMG-Fa-Cx0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2423.1999999999998" y="-529.38530734632684"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gMU-d1-EgY">
+            <objects>
+                <navigationController id="6pc-zb-jJ5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="06A-vQ-i5x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vID-sx-siO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="elw-oL-ISr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2423" y="-529"/>
+        </scene>
+    </scenes>
+</document>

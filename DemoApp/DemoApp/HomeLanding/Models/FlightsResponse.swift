@@ -14,7 +14,7 @@ struct FlightsResponse : Codable, Identifiable {
 	let quotes : [Quotes]?
 	let carriers : [Carriers]?
 	let places : [Places]?
-	let currencies : [Currencies]?
+	let currencies : [Currency]?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -29,7 +29,7 @@ struct FlightsResponse : Codable, Identifiable {
 		quotes = try values.decodeIfPresent([Quotes].self, forKey: .quotes)
 		carriers = try values.decodeIfPresent([Carriers].self, forKey: .carriers)
 		places = try values.decodeIfPresent([Places].self, forKey: .places)
-		currencies = try values.decodeIfPresent([Currencies].self, forKey: .currencies)
+		currencies = try values.decodeIfPresent([Currency].self, forKey: .currencies)
 	}
 
 }
@@ -52,7 +52,7 @@ struct Carriers : Codable {
 
 }
 
-struct Currencies : Codable {
+struct Currency : Codable {
     let code : String?
     let symbol : String?
     let thousandsSeparator : String?

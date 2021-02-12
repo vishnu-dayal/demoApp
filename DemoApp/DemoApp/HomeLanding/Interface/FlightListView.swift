@@ -9,40 +9,30 @@ import SwiftUI
 
 struct FlightListView: View {
     @ObservedObject var interactor = FlightListInteractor()
-    @EnvironmentObject var presenter: FlightListPresenter
+    private var origin: String = ""
+    private var destination: String = ""
+    private var departure: String = ""
     
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.gray]
-        UITableViewCell.appearance().backgroundColor = .clear
-        UITableViewCell.appearance().selectionStyle = .none
-    }
-
     var body: some View {
         NavigationView {
-            VStack {
-                Spacer()
-                List {
-                    ForEach(interactor.quotes ?? []) { quotes in
-                        CellView(quotes: quotes, interactor: interactor).clipShape(RoundedRectangle(cornerRadius: 15))
-                    }
+            List {
+                ForEach(interactor.quotes ?? []) { quotes in
+                    CellView(quotes: quotes, interactor: interactor)
                 }
             }
-        }.navigationBarTitle("Flights").onAppear(perform: {
-            interactor.callAPIToGetFlights()
-            interactor.callListOfCountriesAPI()
-            interactor.callListOfCurrenciesAPI()
+        }.navigationBarTitle("Flights List").onAppear(perform: {
+            interactor.callAPIToGetFlights(originCode: origin, destinationCode: destination, departure: departure)
         })
         .navigationBarItems(trailing: Button(action: {
         }) {
             Text("Filter")
         })
-        
     }
-}
-
-struct MyHeader: View {
-    var body: some View {
-        Text("Flights").foregroundColor(.blue)
+    
+    public mutating func setData(originCode: String, destinationCode: String, departure: String) {
+        self.origin = originCode
+        self.destination = destinationCode
+        self.departure = departure
     }
 }
 
@@ -58,7 +48,7 @@ struct CellView: View {
                         Text( interactor.getFlightName(carrierId: quotes.outboundLeg?.carrierIds?.first) ?? "")
                             .foregroundColor(.blue)
                             .lineLimit(nil)
-                        Spacer() // help to align the title in the left
+                        Spacer()
                         Text(interactor.getCurrencySymbol(quotes: quotes))
                     }
                     Spacer()
@@ -79,15 +69,8 @@ struct CellView: View {
                                 .font(.body)
                         }
                     }
-                    Spacer()
-                    HStack {
-                        Text("Departure:").foregroundColor(.gray)
-                        Spacer()
-                        Text(quotes.outboundLeg?.departureDate ?? "").foregroundColor(.gray)
-                            .font(.body)
-                    }
                 }
-            }.padding()
+            }
         }
     }
 }
@@ -106,8 +89,11 @@ struct FlightListView_Previews: PreviewProvider {
 struct FlightDetailView: View {
     @State var quotes: Quotes
     var body: some View {
-        VStack {
-            Text(verbatim: quotes.outboundLeg?.departureDate ?? "")
+        HStack {
+            Text("Departure:").foregroundColor(.gray)
+            Spacer()
+            Text(quotes.outboundLeg?.departureDate ?? "").foregroundColor(.gray)
+                .font(.body)
         }
     }
 }
